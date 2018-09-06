@@ -46,7 +46,7 @@ android {
         }
     }
     defaultConfig {
-        applicationId "com.example.zhangcx.myapplication4"
+        applicationId "com.example.root.mya"
         minSdkVersion 24
         targetSdkVersion 27
         versionCode 1
