@@ -45,6 +45,10 @@ android {
             }
         }
     }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
     defaultConfig {
         applicationId "com.example.root.mya"
         minSdkVersion 24
