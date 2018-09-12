@@ -31,6 +31,6 @@ public class MainTest {
     public void testCost(){
         int a=5;
         int b=6;
-        Assert.assertEquals(10,a+b);
+        Assert.assertEquals(11,a+b);
     }
 }
