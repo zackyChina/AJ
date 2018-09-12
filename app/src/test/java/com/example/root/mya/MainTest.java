@@ -25,4 +25,12 @@ public class MainTest {
 
         Assert.assertTrue(true);
     }
+
+
+    @Test
+    public void testCost(){
+        int a=5;
+        int b=6;
+        Assert.assertEquals(10,a+b);
+    }
 }
