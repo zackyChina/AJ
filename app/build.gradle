@@ -32,6 +32,7 @@ apply plugin: 'jacoco'
 
 
 
+
 android {
     compileSdkVersion 27
     testOptions {
@@ -113,7 +114,7 @@ dependencies {
 
 
 jacoco {
-    toolVersion = "0.7.1.201405082137"
+    toolVersion = "0.7.5" // "0.7.1.201405082137"
 }
 //这里定义为你想要进行代码覆盖率统计的java目录
 def coverageSourceDirs = ['src/main/java']
@@ -135,5 +136,32 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
     reports {
         xml.enabled = true
         html.enabled = true
+    }
+}
+
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "my:project"
+        property "sonar.projectName", "AJ"
+        property "sonar.projectVersion", "1.0"
+        property "sonar.exclusions", "robospice/**/*"
+        property "sonar.host.url", "http://localhost:9000/sonar" // TODO: - Setup your Sonarqube server address
+
+        property "sonar.sources", "src/main/java"
+        property "sonar.binaries", "build/intermediates/classes/debug"
+        property "sonar.java.binaries", "build/intermediates/classes/debug"
+        property "sonar.tests", "src/test/java, src/androidTest/java"
+        property "sonar.java.test.binaries", "build/intermediates/classes/debug"
+
+        def unit = fileTree(dir: project.projectDir, includes: ['**/*.exec']).files;
+        def ui = fileTree(dir: project.projectDir, includes: ['**/*.ec']).files;
+        unit.addAll(ui);
+        def files = unit.join(", ");
+
+        property "sonar.jacoco.reportPaths", files
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.junit.reportsPath", "build/test-results/testDebugUnitTest"
+        property "sonar.android.lint.report", "build/reports/lint-results.xml"
     }
 }
