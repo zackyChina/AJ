@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    private void buClick(View a){
+    public void buClick(View a){
 
         //todo: add click logic
     }
