@@ -114,8 +114,8 @@ dependencies {
 
 
 jacoco {
-    //toolVersion = "0.7.5.201505241946" //
-    toolVersion =  "0.7.1.201405082137"
+    toolVersion = "0.7.5.201505241946" //
+    //toolVersion =  "0.7.1.201405082137"
 }
 //这里定义为你想要进行代码覆盖率统计的java目录
 def coverageSourceDirs = ['src/main/java']
